@@ -1,27 +1,13 @@
 import Button from "./components/atoms/button/button";
+import Checkbox from "./components/atoms/checkbox/checkbox";
+import Counter from "./components/atoms/counter/counter";
 import Input from "./components/atoms/input/input";
+import Card from "./components/molecules/card/card";
+import TasksList from "./components/organisms/tasks-list/tasks-list";
+import ToDo from "./components/templates/to-do/to-do";
 
 function App() {
-  return (
-    <>
-      <Button onClick={() => console.log("va a agregar")}>Agregar</Button>
-      <Button size="large" onClick={() => console.log("va a eliminar")}>
-        Eliminar
-      </Button>
-      <Input
-        value="test"
-        name="addInput"
-        onChange={() => console.log("esta tipeando...")}
-        placeholder="Placeholder"
-      />
-      <Input
-        value="test"
-        name="addInput"
-        onChange={() => console.log("esta tipeando...")}
-        placeholder="Placeholder 2"
-      />
-    </>
-  );
+  return <ToDo />;
 }
 
 export default App;
