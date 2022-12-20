@@ -1,34 +1,41 @@
+import { useTodoContex } from "../../../context/todo-context/todo-context";
 import Button from "../../atoms/button/button";
 import Counter from "../../atoms/counter/counter";
 import Input from "../../atoms/input/input";
 import TasksList from "../../organisms/tasks-list/tasks-list";
 import "./to-do.scss";
+import useAddTask from "./use-add-task/use-add-task";
 
 const ToDo = () => {
+  const { tasksList, completedTasksList, addTask } = useTodoContex();
+  const { title, handleChangeTitle, setTitle } = useAddTask();
+
   return (
     <div className="to-do">
       <h1 className="to-do__title">TODO LIST</h1>
       <div className="to-do__header">
         <Input
-          value={""}
+          value={title}
           name="addTask"
-          onChange={() => {
-            console.log("va a guardar");
-          }}
+          onChange={handleChangeTitle}
           placeholder="Título"
         />
-        <Button onClick={() => console.log("va a agregar")}>Agregar</Button>
+        <Button
+          onClick={() => {
+            addTask(title);
+            setTitle("");
+          }}
+        >
+          Agregar
+        </Button>
       </div>
 
-      <TasksList
-        tasks={[
-          { id: 1, isCompleted: false, title: "Tarea 1" },
-          { id: 1, isCompleted: false, title: "Tarea 1" },
-          { id: 1, isCompleted: false, title: "Tarea 1" },
-        ]}
-      />
+      <TasksList tasks={tasksList} />
       <div className="to-do__counter">
-        <Counter completedTasks={0} totalTasks={0} />
+        <Counter
+          completedTasks={completedTasksList.length}
+          totalTasks={tasksList.length}
+        />
       </div>
     </div>
   );

@@ -4,12 +4,20 @@ import "./input.scss";
 interface InputProps {
   value: string;
   name: string;
-  onChange: () => void;
+  onChange: (value: string) => void;
   placeholder: string;
 }
 
 const Input: FC<InputProps> = ({ name, onChange, placeholder, value }) => {
-  return <input className="input" placeholder={placeholder} />;
+  return (
+    <input
+      value={value}
+      name={name}
+      className="input"
+      onChange={(e) => onChange(e.target.value)}
+      placeholder={placeholder}
+    />
+  );
 };
 
 export default Input;

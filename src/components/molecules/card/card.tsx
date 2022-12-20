@@ -10,7 +10,7 @@ interface CardProps {
 const Card: FC<CardProps> = ({ title }) => {
   return (
     <div className="card">
-      <Checkbox title={title} isChecked={true} handleCheck={() => {}} />
+      <Checkbox title={title} isChecked={false} handleCheck={() => {}} />
       <Button onClick={() => {}}>Eliminar</Button>
     </div>
   );
